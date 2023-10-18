@@ -1,8 +1,21 @@
-# React + Vite
+# Amina Smakar Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A website made for my friend Amina who is running a catering company.
 
-Currently, two official plugins are available:
+## About
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Amina wanted a website where people could see her work and they could contact her for job inquiries. It is under development.
+
+## Goal and requirements
+
+I wanted to make a website that was clean and easy to navigate through. I made the website responsive because most people use their phones nowadays. It is a one-page with different categories so you can scroll through the whole site.
+
+## Key learnings
+
+- React.js
+
+- Hosting a website with FileZilla
+
+## Link to website
+
+http://www.aminasmakar.se/
