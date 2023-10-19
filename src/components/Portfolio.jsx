@@ -11,7 +11,7 @@ import styled from 'styled-components'
 
 const Portfolio = () => {
   return (
-    <PortfolioSection>
+    <PortfolioSection id="portfolio">
     <h4>TIDIGARE UPPDRAG</h4>
     <Wrapper>
         <Content>

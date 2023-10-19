@@ -1,10 +1,13 @@
 import React from 'react'
-import instagram from './img/instagram.png'
 import styled from 'styled-components'
+import { motion } from 'framer-motion'
+import instagram from './img/instagram-dark.png'
+import facebook from './img/facebook-dark.png'
+import google from './img/google-dark.png'
 
 const Contact = () => {
   return (
-    <ContactSection>
+    <ContactSection id="contact">
     <Wrapper>
     <ContentContainer>
         <h2>Välkommen till Amina Smakar!</h2>
@@ -14,8 +17,32 @@ const Contact = () => {
       <h2>Kontakt</h2>
       <p>För bokning eller frågor hänvisar jag till min mail: <b>
       <Link href="mailto:aminasmakar@gmail.com" target="_blank">aminasmakar@gmail.com</Link></b></p>
-      <a href="https://www.instagram.com/aminasmakar/" target="_blank">
-      <Image src={instagram}/></a><br/>
+      <SocialMediaContainer>
+        <h2>Sociala Medier</h2>
+        <div>
+          <a href="https://www.instagram.com/aminasmakar/" target="_blank">
+            <Logo 
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }} 
+            src={instagram} 
+            alt="Instagram"/>
+            </a>
+          <a href="https://www.google.com/search?sca_esv=574851237&rlz=1C5CHFA_enSE920SE920&q=Amina+Smakar+Catering&si=ALGXSlYtAR3dRxrzsaLzOp4xIy6NiU_P028OdiXjuPyCNfY-NMBthnodpH9OwSqUcp2UVZn9-9yzii1leNVGrvdoFinEdpeCsQQUqm6W5fBL4dxAxeP5t2xfg9qHIILS6nqo1iIa1ID7TS1nWqRJSZru8x-S2D0VXYscN7KU8I6GZ_jemZNkU4L8gMYnoBVcAtBYk9FEKPxW2qFQTeffNB9Z_V5tEJP4BA%3D%3D&sa=X&ved=2ahUKEwiT-9e5s4KCAxXlXfEDHZXlDdAQ6RN6BAggEAE&biw=1440&bih=671&dpr=2" target="_blank">
+            <Logo 
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }} 
+            src={google} 
+            alt="Google"/>
+            </a>
+          <a href="">
+            <Logo 
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }} 
+            src={facebook} 
+            alt="Facebook"/>
+            </a>
+            </div>
+      </SocialMediaContainer>
     </ContentContainer>
     </Wrapper>
 </ContactSection>
@@ -24,10 +51,9 @@ const Contact = () => {
 }
 
 const ContactSection = styled.section`
-  padding-top: 2%;
   min-height: 60vh;
   width: 100%;
-  display: grid;
+  display: flex;
 `;
 
 const Wrapper = styled.div`
@@ -39,6 +65,10 @@ const Wrapper = styled.div`
   padding-left: 2%;
   justify-content: center;
   background-color: white;
+
+  @media only screen and (min-width: 900px){
+    flex-direction: row;
+  }
 `;
 
 const ContentContainer = styled.div`
@@ -50,6 +80,10 @@ const ContentContainer = styled.div`
   padding-right: 5%;
   margin-left: auto;
   margin-right: auto;
+
+  @media only screen and (min-width: 900px){
+    width: 48%;
+  }
 `;
 
 const Link = styled.a`
@@ -61,8 +95,21 @@ const Link = styled.a`
   }
 `;
 
-const Image = styled.img`
-  width: 40%;
+const SocialMediaContainer = styled.div`
+  background-color:rgb(214, 214, 214);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  min-height: 20vh;
+  border-left: 3px solid rgb(105, 105, 105);
+  gap: 10px;
+`;
+
+const Logo = styled(motion.img)`
+  width: 40px;
+  margin: 10px;
 `;
 
 export default Contact

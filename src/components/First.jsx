@@ -2,9 +2,9 @@ import React from 'react'
 import lightLogo from './img/logo-light.png'
 import styled from 'styled-components'
 
-const FirstPage = () => {
+const First = () => {
   return (
-    <Container>
+    <Container id="first">
       <Title>Skräddarsydda upplevelser för alla tillfällen</Title>
       <Logo src={lightLogo}/>
       </Container>
@@ -13,7 +13,7 @@ const FirstPage = () => {
 
 const Container = styled.div`
   min-height: 20vh;
-  padding-top: 20px;
+  padding-top: 70px;
   color: white;
   text-align: center;
   font-family: 'lato', 'roboto', serif;
@@ -58,5 +58,5 @@ const Logo = styled.img`
   }
 `;
 
-export default FirstPage
+export default First
 

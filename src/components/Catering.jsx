@@ -9,7 +9,7 @@ import styled from 'styled-components'
 
 const Catering = () => {
   return (
-    <CateringSection>
+    <CateringSection id="catering">
       <h4>CATERING</h4>
     <Wrapper>
       <ContentContainer>

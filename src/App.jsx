@@ -1,24 +1,22 @@
 import './App.css'
-import FirstPage from './components/FirstPage'
-import About from './components/About'
-import Portfolio from './components/Portfolio'
-import Catering from './components/Catering'
-import Contact from './components/Contact'
-import Header from './components/Header'
-import Footer from './components/Footer'
+import routes from "./routes"
+import Root from "./components/Root"
+import Error from './components/Error'
+import {
+  createBrowserRouter,
+  RouterProvider, } from "react-router-dom"
 
-function App() {
+const App = () => {
+  const router = createBrowserRouter([
+    {
+      element: <Root />,
+      errorElement: <Error />,
+      children: routes
+    },
+  ])
 
   return (
-    <>
-      <Header />
-      <FirstPage />
-      <Contact />
-      <Portfolio />
-      <Catering />
-      <About />
-      <Footer />
-    </>
+      <RouterProvider router={router} />
   )
 }
 

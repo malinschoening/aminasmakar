@@ -1,120 +1,134 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import lightLogo from './img/logo-light.png'
-import mobileLogo from './img/mobile-menu-logo.png'
-import { motion } from "framer-motion"
 import styled from 'styled-components'
+import scrollToTopImage from './img/top.png'
+import HamburgerMenu from './HamburgerMenu'
+import Navigation from './Navigation'
 
 const Header = () => {
 
-const header = document.getElementsByTagName('header');
-window.onscroll = function() {headerScroll()};
+  const [headerView, setHeaderView] = useState(true);
+  const [scroll, setScroll] = useState(true);
 
-function headerScroll() {
+  window.onscroll = function() {headerScroll()};
+
+  const headerScroll = () => {
   if (document.body.scrollTop > 90 || document.documentElement.scrollTop > 90) {
-    header[0].classList.add('scroll');
-    header[0].classList.remove('top');
+    setScroll(false);
 
   } else {
-    header[0].classList.remove('scroll');
-    header[0].classList.add('top');
+    setScroll(true);
   }
 }
 
-  const [hamburger, setHamburger] = useState(false)
+  const handleScrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
   return (
     <>
-    <header id="header" className="top">
-        <img id="logo" src={lightLogo} />
-            <nav id="main-nav">
-            <ul>
-                <li><a href="#catering">CATERING</a></li>
-                <li><a href="#contact">KONTAKT</a></li>
-                <li><a href="#portfolio">TIDIGARE UPPDRAG</a></li>
-                <li><a href="#about">OM MIG</a></li>
-            </ul>
-        </nav>
-    </header>
-    <header id="mobile-header" >
-      <motion.img src={mobileLogo}
-      onClick={() => setHamburger(!hamburger)}
-      animate={{
-        rotate: hamburger ? 90 : 0
-      }}/>
-            <ul id="mobile-ul" className={hamburger ? 'open' : 'closed'}>
-                <li><a href="#catering">CATERING</a></li>
-                <li><a href="#contact">KONTAKT</a></li>
-                <li><a href="#portfolio">TIDIGARE UPPDRAG</a></li>
-                <li><a href="#about">OM MIG</a></li>
-            </ul>
-    </header>
+    <DesktopHeader className={scroll ? 'top' : 'scroll'}>
+        <Logo src={lightLogo} className={scroll ? 'top' : 'scroll'} />
+        <Navigation headerView={true} scroll={scroll}/>
+    </DesktopHeader>
+    <MobileHeader>
+      <HamburgerMenu />
+    </MobileHeader>
+    {scroll 
+      ? ''
+      : <TopLink src={scrollToTopImage} alt="Arrow" onClick={handleScrollToTop}/>
+    }
     </>
   )
 }
 
-const HeaderSection = styled.header`
+const DesktopHeader = styled.header`
   width: 100%;
   display: none;
-`;
+
+  @media only screen and (min-width: 900px){
+    height: 50px;
+    display: flex;
+    z-index: 1;
+
+    &.top {
+      display: flex;
+      justify-content: space-between;
+      top: 0;
+    }
+
+    &.scroll {
+      opacity: 0.8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgb(105, 105, 105);
+      height: 80px;
+      width: 100%;
+      position: fixed;
+      top: 0;
+    }
+  }
+
+  @media only screen and (min-width: 1200px){
+    height: 80px;
+  }
+  `;
+
+  const Logo = styled.img`
+  height: 50px;
+  margin-left: 20px;
+
+  @media only screen and (min-width: 600px){
+    &.top {
+      display: none;
+    }
+  }
+
+  @media only screen and (min-width: 900px){
+    &.top{
+      height: 50px;
+      padding-top: 20px;
+      display: block;
+      margin-left: 30px;
+    }
+
+    &.scroll {
+      display: block;
+      height: 50px;
+      padding-top: 10px;
+      margin-left: 20px;
+    }
+  }
+
+  @media only screen and (min-width: 1200px){
+    &.top {
+      height: 90px;
+      padding-left: 100px;
+    }
+  }
+  `;
 
 const MobileHeader = styled.header`
   position: fixed;
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: black;
+  background-color: grey;
   height: 55px;
-  width: 120vw;
-`;
+  width: 100%;
 
-const Logo = styled.img`
-
-`;
-
-const Hamburger = styled(motion.img)`
-  width: 40px;
-  padding: 8px;
-`;
-
-const Navigation = styled.nav`
-  font-size: 1.4rem;
-    width: 100%;
-    text-align: center;
-
-    &a {
-      color: white;
-      text-decoration: none;
-    }
-
-    &ul li {
-      display: inline;
-      list-style: none;
-      padding-right: 3%;
-    }
-`;
-
-const MobileNav = styled.ul`
-  padding-top: 15px;
-  list-style-type: none;
-  color: white;
-  font-size: calc(15px + 0.890625vw);
-
-  &.open {
-    display: inline;
-    position: absolute;
-    left: 0;
-    background-color: black;
-    padding-right: 40px;
-    opacity: 0.9;
-    border-bottom-right-radius: 10px;
-    padding-bottom: 20px;
-    margin-top: 55px;
-  }
-
-  &.closed {
+  @media only screen and (min-width: 900px){
     display: none;
   }
 `;
 
+const TopLink = styled.img`
+  display: block;
+  position: fixed;
+  width: 40px;
+  bottom: 50px;
+  right: 50px;
+`;
 
 export default Header
