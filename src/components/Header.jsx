@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
+import { motion } from 'framer-motion'
 import lightLogo from './img/logo-light.png'
 import styled from 'styled-components'
 import scrollToTopImage from './img/top.png'
@@ -7,7 +8,6 @@ import Navigation from './Navigation'
 
 const Header = () => {
 
-  const [headerView, setHeaderView] = useState(true);
   const [scroll, setScroll] = useState(true);
 
   window.onscroll = function() {headerScroll()};
@@ -36,7 +36,13 @@ const Header = () => {
     </MobileHeader>
     {scroll 
       ? ''
-      : <TopLink src={scrollToTopImage} alt="Arrow" onClick={handleScrollToTop}/>
+      : <TopLink 
+          initial={{opacity: 0.6}}
+          whileHover={{ scale: 1.1, opacity: 1.0 }}
+          whileTap={{ scale: 0.9 }}
+          src={scrollToTopImage} 
+          alt="Arrow" 
+          onClick={handleScrollToTop}/>
     }
     </>
   )
@@ -123,7 +129,7 @@ const MobileHeader = styled.header`
   }
 `;
 
-const TopLink = styled.img`
+const TopLink = styled(motion.img)`
   display: block;
   position: fixed;
   width: 40px;

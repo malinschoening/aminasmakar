@@ -34,7 +34,7 @@ const Contact = () => {
             src={google} 
             alt="Google"/>
             </a>
-          <a href="">
+          <a href="https://www.facebook.com/profile.php?id=100069400555787" target="_blank">
             <Logo 
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }} 

@@ -97,7 +97,7 @@ const MobileNav = styled.nav`
     opacity: 0.9;
     border-bottom-right-radius: 10px;
     padding-bottom: 20px;
-    margin-top: 55px;
+    margin-top: -5px;
   }
 `;
 
