@@ -11,6 +11,7 @@ html {
 body {
   background: url(./components/img/backgrounds/background1-mobile.jpg) no-repeat;
   background-attachment: fixed;
+  background-size: cover;
   background-color: black;
   display: flex;
   width: 100%;
@@ -59,6 +60,7 @@ h4 {
 
   body{
       background: url(./components/img/backgrounds/background1.jpg) no-repeat;
+      background-size: cover;
       background-attachment: fixed; 
       background-color: black;
   }
